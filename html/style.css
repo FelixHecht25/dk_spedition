@@ -1,0 +1,795 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #e9eef7;
+    background: transparent;
+}
+
+.hidden {
+    display: none !important;
+}
+
+#app {
+    position: fixed;
+    inset: 0;
+    background: rgba(5, 8, 14, 0.62);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.panel {
+    width: 1180px;
+    max-width: 94vw;
+    background: #111827;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 18px;
+    box-shadow: 0 20px 80px rgba(0,0,0,0.45);
+    overflow: hidden;
+}
+
+.panel-header,
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 26px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    background: linear-gradient(135deg, #111827, #172033);
+}
+
+.panel-header h1,
+.modal-header h2 {
+    margin: 0;
+    font-size: 26px;
+}
+
+.panel-header p,
+.modal-header p {
+    margin: 5px 0 0;
+    color: #9ca3af;
+}
+
+.icon-button {
+    border: 0;
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 280px 1fr 280px;
+    gap: 18px;
+    padding: 18px;
+}
+
+.card {
+    background: #0b1220;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 18px;
+}
+
+.card h2 {
+    margin: 0 0 16px;
+    font-size: 18px;
+}
+
+.card h3 {
+    margin: 18px 0 10px;
+    font-size: 14px;
+    color: #cbd5e1;
+}
+
+.profile-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    color: #cbd5e1;
+}
+
+.profile-row strong {
+    color: #ffffff;
+}
+
+.xp-box {
+    margin-top: 14px;
+}
+
+.xp-label {
+    display: flex;
+    justify-content: space-between;
+    color: #cbd5e1;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+.xp-bar {
+    height: 10px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+#profile-xp-fill {
+    height: 100%;
+    width: 0%;
+    background: #3b82f6;
+    border-radius: 999px;
+}
+
+.tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tag {
+    padding: 6px 9px;
+    border-radius: 999px;
+    background: rgba(59,130,246,0.18);
+    color: #bfdbfe;
+    font-size: 12px;
+}
+
+.tag.locked {
+    background: rgba(148,163,184,0.14);
+    color: #94a3b8;
+}
+
+.main-card {
+    min-height: 610px;
+}
+
+.section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.section-title h2 {
+    margin: 0;
+}
+
+.section-title button {
+    background: #1f2937;
+    border: 1px solid rgba(255,255,255,0.08);
+    color: #e5e7eb;
+    border-radius: 10px;
+    padding: 9px 12px;
+    cursor: pointer;
+}
+
+.offer-list {
+    display: grid;
+    gap: 10px;
+}
+
+.offer {
+    border: 1px solid rgba(255,255,255,0.08);
+    background: #111827;
+    border-radius: 14px;
+    padding: 14px;
+    cursor: pointer;
+}
+
+.offer:hover,
+.offer.selected {
+    border-color: #3b82f6;
+    background: #172033;
+}
+
+.offer h3 {
+    margin: 0 0 8px;
+    font-size: 16px;
+    color: #fff;
+}
+
+.offer-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    color: #cbd5e1;
+    font-size: 12px;
+}
+
+.details-box {
+    margin-top: 16px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: #0f172a;
+    border-radius: 14px;
+    padding: 16px;
+    min-height: 150px;
+}
+
+.details-box.empty {
+    color: #94a3b8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.detail-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.detail-item {
+    background: rgba(255,255,255,0.04);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.detail-item span {
+    display: block;
+    color: #94a3b8;
+    font-size: 12px;
+    margin-bottom: 4px;
+}
+
+.detail-item strong {
+    color: #fff;
+    font-size: 14px;
+}
+
+.accept-button {
+    width: 100%;
+    margin-top: 16px;
+    padding: 14px 16px;
+    border: 0;
+    border-radius: 14px;
+    background: #2563eb;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.accept-button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.unlock-list {
+    display: grid;
+    gap: 8px;
+}
+
+.unlock {
+    padding: 10px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.06);
+}
+
+.unlock strong {
+    display: block;
+    font-size: 14px;
+}
+
+.unlock span {
+    display: block;
+    margin-top: 4px;
+    font-size: 12px;
+    color: #94a3b8;
+}
+
+.unlock.unlocked {
+    border-color: rgba(34,197,94,0.35);
+}
+
+.unlock.locked {
+    opacity: 0.65;
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(5, 8, 14, 0.70);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.document-card,
+.exam-card {
+    width: 720px;
+    max-width: 92vw;
+    max-height: 90vh;
+    overflow: auto;
+    background: #111827;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 18px;
+    box-shadow: 0 20px 80px rgba(0,0,0,0.45);
+}
+
+.document-content {
+    padding: 22px;
+    white-space: pre-wrap;
+    line-height: 1.55;
+    color: #e5e7eb;
+}
+
+#adr-question-list {
+    padding: 18px;
+    display: grid;
+    gap: 16px;
+}
+
+.exam-question {
+    background: #0b1220;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    padding: 14px;
+}
+
+.exam-question h3 {
+    margin: 0 0 12px;
+    font-size: 15px;
+}
+
+.exam-answer {
+    display: block;
+    margin: 8px 0;
+    color: #d1d5db;
+}
+
+/* =========================================================
+   DK Spedition - Fullscreen Dokumentansicht ohne Panelrahmen
+   ========================================================= */
+
+#document-view.modal {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.62);
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Blauen Rahmen / blaue Karte komplett entfernen */
+#document-view .document-card {
+    width: 100vw;
+    height: 100vh;
+
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+    margin: 0;
+}
+
+/* Header-Leiste ausblenden */
+#document-view .modal-header {
+    position: absolute;
+    top: 22px;
+    right: 26px;
+    z-index: 50;
+
+    height: auto;
+    padding: 0;
+    margin: 0;
+
+    background: transparent !important;
+    border: none !important;
+}
+
+/* Titel ausblenden, weil nur das Papier sichtbar sein soll */
+#document-view .modal-header h2 {
+    display: none;
+}
+
+/* Close-Button bleibt sichtbar */
+#document-view .modal-header .icon-button {
+    width: 44px;
+    height: 44px;
+
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    background: rgba(17, 24, 39, 0.88);
+    color: #ffffff;
+
+    font-size: 26px;
+    font-weight: 800;
+    line-height: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+}
+
+/* Inhalt nimmt den kompletten Bildschirm ein */
+#document-view .document-content {
+    width: 100vw;
+    height: 100vh;
+
+    background: transparent !important;
+    border: none !important;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+    margin: 0;
+}
+
+/* A4-Papier deutlich größer */
+#document-view .paper {
+    width: 794px;
+    height: 1123px;
+    min-height: 1123px;
+
+    background: #ffffff !important;
+    color: #111111 !important;
+
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+
+    padding: 34px;
+    position: relative;
+
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.95),
+        0 22px 70px rgba(0, 0, 0, 0.55);
+
+    /*
+       Größe des Dokuments.
+       0.88 = deutlich größer als vorher.
+       Wenn es bei dir unten/oben abgeschnitten ist: 0.82 nehmen.
+       Wenn noch größer gewünscht: 0.92 nehmen.
+    */
+    transform: scale(0.88);
+    transform-origin: center center;
+}
+
+#document-view .paper * {
+    color: #111111;
+    box-sizing: border-box;
+}
+
+/* Papierkopf */
+#document-view .paper-header {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 20px;
+
+    border-bottom: 3px solid #1f2937;
+
+    padding-bottom: 14px;
+    margin-bottom: 16px;
+}
+
+#document-view .paper-header h2 {
+    margin: 0 0 6px 0;
+    font-size: 25px;
+    color: #111111;
+}
+
+#document-view .paper-header p {
+    margin: 0;
+    font-size: 13px;
+    color: #333333;
+}
+
+#document-view .paper-meta {
+    text-align: right;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+/* Boxen */
+#document-view .paper-grid.two {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+#document-view .paper-box {
+    border: 1px solid #111111;
+    padding: 10px;
+
+    font-size: 12px;
+    line-height: 1.35;
+
+    min-height: 86px;
+}
+
+#document-view .paper-box h3 {
+    margin: 0 0 6px 0;
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+/* Tabellen */
+#document-view .paper-table,
+#document-view .adr-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+
+    margin: 12px 0;
+
+    font-size: 11px;
+}
+
+#document-view .paper-table th,
+#document-view .paper-table td,
+#document-view .adr-table th,
+#document-view .adr-table td {
+    border: 1px solid #111111;
+    padding: 6px;
+
+    vertical-align: top;
+    word-break: break-word;
+}
+
+#document-view .paper-table th,
+#document-view .adr-table th {
+    background: #e5e7eb;
+    font-weight: 800;
+    text-align: left;
+}
+
+/* Vermerke */
+#document-view .paper-notes {
+    border: 1px solid #111111;
+
+    padding: 10px;
+    margin-top: 12px;
+
+    font-size: 12px;
+    line-height: 1.45;
+}
+
+/* Signaturen */
+#document-view .signature-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 26px;
+    margin-top: 28px;
+
+    text-align: center;
+    font-size: 11px;
+}
+
+#document-view .signature-grid.three {
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+#document-view .signature-line {
+    height: 30px;
+
+    border-bottom: 1px solid #111111;
+    margin-bottom: 6px;
+}
+
+/* Lieferschein Bemerkungsfeld */
+#document-view .note-lines {
+    height: 58px;
+    margin-top: 6px;
+
+    background: repeating-linear-gradient(
+        to bottom,
+        transparent 0,
+        transparent 18px,
+        #9ca3af 19px
+    );
+}
+
+/* ADR Papier */
+#document-view .adr-paper {
+    padding-left: 44px;
+    padding-right: 44px;
+}
+
+#document-view .adr-paper h1 {
+    margin: 0 0 16px 0;
+
+    font-size: 24px;
+    text-decoration: underline;
+    font-weight: 900;
+}
+
+#document-view .company-text {
+    margin-bottom: 14px;
+
+    font-size: 13px;
+    line-height: 1.35;
+}
+
+#document-view .adr-address-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    gap: 12px;
+    margin-bottom: 14px;
+
+    font-size: 11px;
+    line-height: 1.32;
+}
+
+#document-view .adr-address-grid h3 {
+    margin: 0 0 5px 0;
+
+    font-size: 12px;
+    font-weight: 800;
+}
+
+#document-view .adr-summary {
+    margin: 14px 0;
+
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+#document-view .green-tag {
+    display: inline-block;
+
+    background: #bbf7d0;
+
+    padding: 1px 8px;
+
+    font-weight: 800;
+}
+
+#document-view .doc-meta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    border: 1px solid #111111;
+    margin: 14px 0;
+
+    font-size: 11px;
+}
+
+#document-view .doc-meta-grid div {
+    border: 1px solid #111111;
+    padding: 6px;
+}
+
+#document-view .signature-box {
+    border: 1px solid #111111;
+
+    padding: 10px;
+    margin-top: 14px;
+}
+
+#document-view .signature-box h3 {
+    margin: 0;
+
+    text-align: center;
+    font-size: 12px;
+}
+
+/* ADR rote Seitenstreifen */
+#document-view .adr-stripes {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+
+    width: 18px;
+
+    background: repeating-linear-gradient(
+        135deg,
+        #dc2626 0px,
+        #dc2626 12px,
+        #ffffff 12px,
+        #ffffff 24px
+    );
+}
+
+#document-view .adr-stripes.left {
+    left: 0;
+}
+
+#document-view .adr-stripes.right {
+    right: 0;
+}
+
+/* Gefahrgutgenehmigung */
+#document-view .permit-header {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+
+    gap: 18px;
+
+    border-bottom: 3px solid #991b1b;
+
+    padding-bottom: 14px;
+    margin-bottom: 16px;
+}
+
+#document-view .permit-header h1 {
+    margin: 0;
+
+    font-size: 24px;
+    color: #111111;
+}
+
+#document-view .permit-header h2 {
+    margin: 0 0 6px 0;
+
+    font-size: 22px;
+    color: #991b1b;
+}
+
+#document-view .permit-header p {
+    margin: 0;
+
+    font-size: 12px;
+}
+
+#document-view .warning-box {
+    border: 2px solid #991b1b;
+
+    background: #fff7f7;
+
+    padding: 10px;
+    margin: 12px 0;
+
+    font-size: 12px;
+    line-height: 1.35;
+}
+
+#document-view .warning-box h3 {
+    margin: 0 0 6px 0;
+
+    font-size: 13px;
+    color: #991b1b;
+}
+
+.detail-item.danger {
+    border-color: rgba(239, 68, 68, 0.5);
+    background: rgba(239, 68, 68, 0.08);
+}
+
+.detail-item.danger strong {
+    color: #fca5a5;
+}
+
+.details-warning {
+    margin-top: 14px;
+    padding: 12px;
+    border: 1px solid rgba(239, 68, 68, 0.45);
+    border-radius: 10px;
+    background: rgba(239, 68, 68, 0.08);
+    color: #fecaca;
+    font-size: 13px;
+    line-height: 1.4;
+}

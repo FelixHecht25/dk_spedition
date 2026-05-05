@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DK Spedition</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div id="app" class="hidden">
+        <div id="dispatcher" class="panel hidden">
+            <div class="panel-header">
+                <div>
+                    <h1 id="dispatcher-title">Dispatcher Panel</h1>
+                    <p id="dispatcher-subtitle">DK Logistics Center</p>
+                </div>
+                <button class="icon-button" onclick="closeUi()">×</button>
+            </div>
+
+            <div class="layout">
+                <aside class="card">
+                    <h2>Fahrerprofil</h2>
+
+                    <div class="profile-row">
+                        <span>Level</span>
+                        <strong id="profile-level">1</strong>
+                    </div>
+
+                    <div class="profile-row">
+                        <span>Titel</span>
+                        <strong id="profile-title">Bote</strong>
+                    </div>
+
+                    <div class="xp-box">
+                        <div class="xp-label">
+                            <span>XP</span>
+                            <span id="profile-xp">0 / 350</span>
+                        </div>
+                        <div class="xp-bar">
+                            <div id="profile-xp-fill"></div>
+                        </div>
+                    </div>
+
+                    <h3>Berechtigungen</h3>
+                    <div id="license-list" class="tag-list"></div>
+
+                    <h3>Statistik</h3>
+                    <div class="profile-row">
+                        <span>Abgeschlossen</span>
+                        <strong id="stat-completed">0</strong>
+                    </div>
+                    <div class="profile-row">
+                        <span>Fehlgeschlagen</span>
+                        <strong id="stat-failed">0</strong>
+                    </div>
+                    <div class="profile-row">
+                        <span>ADR-Fahrten</span>
+                        <strong id="stat-adr">0</strong>
+                    </div>
+                </aside>
+
+                <main class="card main-card">
+                    <div class="section-title">
+                        <h2>Verfügbare Aufträge</h2>
+                        <button onclick="refreshOffers()">Aktualisieren</button>
+                    </div>
+
+                    <div id="offer-list" class="offer-list"></div>
+
+                    <div id="offer-details" class="details-box empty">
+                        Wähle einen Auftrag aus.
+                    </div>
+
+                    <button id="accept-button" class="accept-button" onclick="acceptSelectedOffer()" disabled>
+                        Auftrag annehmen
+                    </button>
+                </main>
+
+                <aside class="card">
+                    <h2>Freischaltungen</h2>
+                    <div id="unlock-list" class="unlock-list"></div>
+                </aside>
+            </div>
+        </div>
+
+        <div id="document-view" class="modal hidden">
+            <div class="document-card">
+                <div class="modal-header">
+                    <h2 id="document-title">Dokument</h2>
+                    <button class="icon-button" onclick="closeUi()">×</button>
+                </div>
+
+                <div id="document-content" class="document-content"></div>
+            </div>
+        </div>
+
+        <div id="adr-exam" class="modal hidden">
+            <div class="exam-card">
+                <div class="modal-header">
+                    <div>
+                        <h2>ADR-Prüfung</h2>
+                        <p id="adr-meta"></p>
+                    </div>
+                    <button class="icon-button" onclick="closeUi()">×</button>
+                </div>
+
+                <div id="adr-question-list"></div>
+
+                <button class="accept-button" onclick="submitAdrExam()">Prüfung abgeben</button>
+            </div>
+        </div>
+
+        <div id="police-view" class="modal hidden">
+            <div class="document-card">
+                <div class="modal-header">
+                    <h2>Kontrollergebnis</h2>
+                    <button class="icon-button" onclick="closeUi()">×</button>
+                </div>
+
+                <div id="police-content" class="document-content"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
